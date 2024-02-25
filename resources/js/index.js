@@ -23,7 +23,7 @@ try {
   // Instantiate a game Object using the Hangman class.
 const game = new Hangman(canvas);
     difficultySelectForm.addEventListener(`submit`, function(event) {
-
+        event.preventDefault();
 const difficulty = difficultySelect.value;
 
 game.start(difficulty, function () {

@@ -32,17 +32,15 @@ class Hangman {
    * @param {function} next callback function to be called after a word is received from the API.
    */
   start(difficulty, next) {
-    this.getRandomWord(difficulty,(word) =>{
+    this.getRandomWord(difficulty,(word) => {
     this.word = word;
-    });
     this.clearCanvas();
     this.drawBase();
     this.guesses = [];
     this.isOver = false;
     this.didWin = false;
-    if (next){
     next();
-    }
+    });
     }
     // get word and set it to the class's this.word
     // clear canvas

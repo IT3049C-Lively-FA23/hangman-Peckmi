@@ -7,14 +7,16 @@ Instructions to this assignment can be found [here](https://reedws.github.io/IT3
 
 - [x] update the assignment checks above to the correct link. - Done Automatically
 - [x] update the assignment checks above to the correct link. - Done Automatically
-- [ ] make sure the assignment checks pass
-- [ ] fill out the self evaluation and Reflection
-- [ ] submit the repository link on Canvas
+- [x] make sure the assignment checks pass
+- [x] fill out the self evaluation and Reflection
+- [x] submit the repository link on Canvas
 
 ## Self-Evaluation:
 
 how many points out of 20 do you deserve on this assignment:
+    18/20, i had some issues getting some of the pieces to fit together and work well.
 
 ## Self-Reflection:
 
 ### How long it took me to finish this?
+    about 2 hours
