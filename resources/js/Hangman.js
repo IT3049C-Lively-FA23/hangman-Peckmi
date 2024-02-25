@@ -162,7 +162,7 @@ class Hangman {
    * Hint: use the Array.prototype.join method.
    */
   getGuessesText() {
-    return ``;
+    return `(Guesses: ${this.guesses.join(', ')})`;
   }
 
   /**
