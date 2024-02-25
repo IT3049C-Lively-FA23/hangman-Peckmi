@@ -6,6 +6,7 @@ class Hangman {
 
     this.canvas = _canvas;
     this.ctx = this.canvas.getContext(`2d`);
+    this.wrongGuessCount = 0;
   }
 
   /**
@@ -31,19 +32,55 @@ class Hangman {
    * @param {function} next callback function to be called after a word is received from the API.
    */
   start(difficulty, next) {
+    this.getRandomWord(difficulty,(word) =>{
+    this.word = word;
+    });
+    this.clearCanvas();
+    this.drawBase();
+    this.guesses = [];
+    this.isOver = false;
+    this.didWin = false;
+    if (next){
+    next();
+    }
+    }
     // get word and set it to the class's this.word
     // clear canvas
     // draw base
     // reset this.guesses to empty array
     // reset this.isOver to false
     // reset this.didWin to false
-  }
 
   /**
    *
    * @param {string} letter the guessed letter.
    */
   guess(letter) {
+
+    if(letter === ' '){
+    throw new Error("Error. You need to enter a letter.");
+    }
+    if (!/^[a-zA-Z]$/.test(letter)){
+    throw new Error ("Error. You may only enter letters.")
+    }
+    if (letter.length !==1){
+    throw new Error ("Error. You may only enter one letter at a time.");
+    }
+
+    letter = letter.toLowerCase();
+
+    if(this.guesses.includes(letter)){
+    throw new Error ("Error. You have already guessed this letter")
+    }
+
+    this.guesses.push(letter);
+
+    if (this.word.includes(letter)){
+    this.checkWin();
+    } else {
+    this.onWrongGuess();
+    }
+    }
     // Check if nothing was provided and throw an error if so
     // Check for invalid cases (numbers, symbols, ...) throw an error if it is
     // Check if more than one letter was provided. throw an error if it is.
@@ -53,7 +90,6 @@ class Hangman {
     // check if the word includes the guessed letter:
     //    if it's is call checkWin()
     //    if it's not call onWrongGuess()
-  }
 
   checkWin() {
     // using the word and the guesses array, figure out how many remaining unknowns.
