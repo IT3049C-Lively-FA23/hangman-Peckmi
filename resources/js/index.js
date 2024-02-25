@@ -56,7 +56,30 @@ game.start(difficulty, function () {
   //      2. disable the guessButton
   //      3. show the resetGame button
   // if the game is won or lost, show an alert.
-  guessForm.addEventListener(`submit`, function (e) {});
+  guessForm.addEventListener(`submit`, function (e) {
+    e.preventDefault();
+    const guessInput = guessInput.value;
+
+    try{
+        game.guess(guessInput);
+        wordHolderText.textContent = game.getWordHolderText();
+        guessesText.textContent = game.getGuessesText();
+        guessInput.value = '';
+    if(game,isOver){
+        guessInput.disabled = true;
+        guessButton.disabled = true;
+        resetGame.style.display = 'block';
+    if (game.didWin){
+        alert("You Won!");
+    } else {
+        alert("You Lost! The correct word was: " + game.word);
+    }
+    }
+    } catch (error){
+        console.error(error);
+        alert(error.message);
+    }
+  });
 
   // add a click Event Listener to the resetGame button
   //    show the startWrapper
