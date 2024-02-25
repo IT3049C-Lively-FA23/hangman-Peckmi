@@ -92,9 +92,15 @@ class Hangman {
     //    if it's not call onWrongGuess()
 
   checkWin() {
+  const unknowns =this.word.split('').every(letter => this.guesses.includes(letter));
+  if(unknowns === 0){
+  this.didWin=true;
+  this.isOver=true;
+  }
+  }
     // using the word and the guesses array, figure out how many remaining unknowns.
     // if zero, set both didWin, and isOver to true
-  }
+
 
   /**
    * Based on the number of wrong guesses, this function would determine and call the appropriate drawing function
