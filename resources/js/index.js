@@ -84,7 +84,10 @@ game.start(difficulty, function () {
   // add a click Event Listener to the resetGame button
   //    show the startWrapper
   //    hide the gameWrapper
-  resetGame.addEventListener(`click`, function (e) {});
+  resetGame.addEventListener(`click`, function (e) {
+    startWrapper.style.display = 'block';
+    gameWrapper.style.display = 'none';
+  });
 } catch (error) {
   console.error(error);
   alert(error);
