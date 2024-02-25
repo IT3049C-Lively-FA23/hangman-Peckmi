@@ -107,7 +107,35 @@ class Hangman {
    * drawHead, drawBody, drawRightArm, drawLeftArm, drawRightLeg, or drawLeftLeg.
    * if the number wrong guesses is 6, then also set isOver to true and didWin to false.
    */
-  onWrongGuess() {}
+  onWrongGuess() {
+  this.wrongGuessCount++;
+
+  if(this.wrongGuessCount === 0){
+     this.drawBase();
+  }
+  if(this.wrongGuessCount === 1){
+     this.drawHead();
+  }
+  if(this.wrongGuessCount === 2){
+     this.drawBody();
+    }
+  if(this.wrongGuessCount === 3){
+     this.drawRightArm();
+  }
+  if(this.wrongGuessCount === 4){
+     this.drawLeftArm();
+  }
+  if(this.wrongGuessCount === 5){
+     this.drawRightLeg();
+  }
+  if(this.wrongGuessCount === 6){
+     this.drawLeftLeg();
+     this.isOver=true;
+     this.didWin=false;
+  }
+  }
+
+
 
   /**
    * This function will return a string of the word placeholder
@@ -115,7 +143,16 @@ class Hangman {
    * i.e.: if the word is BOOK, and the letter O has been guessed, this would return _ O O _
    */
   getWordHolderText() {
-    return;
+  const placeholder = [];
+
+  for(const letter of this.word){
+    if(this.guesses.includes(letter)){
+    placeholder.push(letter);
+    } else {
+        placeholder.push('_');
+    }
+  }
+    return placeholder.join(' ');
   }
 
   /**
